@@ -1,17 +1,20 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
-  <hr>
-  <draggable 
-    v-model="draggableItems" 
-    group="people" 
-    item-key="id"
-    @end="handleDragEnd"
-  >
-    <template #item="{element}">
-      <div>value is : {{element.value}}</div>
-    </template>
-  </draggable>
+  <h1>
+    Draggable Example
+  </h1>
+  <div class="draggable-area">
+    <draggable 
+      v-model="draggableItems" 
+      item-key="id"
+      @end="handleDragEnd"
+    >
+      <template #item="{element}">
+        <div class="draggable-item">
+          value is : {{element.value}}
+        </div>
+      </template>
+    </draggable>
+  </div>
 </template>
 
 <script lang="ts">
@@ -59,13 +62,19 @@ export default defineComponent({
 })
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+.draggable-area {
+  width: 80vw;
+  margin: auto;
+  border: 2px dashed rgb(117, 164, 250);
+  border-radius: 4px;
+  padding: 6px;
+}
+
+.draggable-item {
+  margin: 4px 0;
+  padding: 10px;
+  border: 1px solid rgb(50, 81, 138);
+  border-radius: 4px;
 }
 </style>
