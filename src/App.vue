@@ -2,19 +2,20 @@
   <h1>
     Draggable Example
   </h1>
-  <div class="draggable-area">
-    <draggable 
-      v-model="draggableItems" 
-      item-key="id"
-      @end="handleDragEnd"
-    >
-      <template #item="{element}">
-        <div class="draggable-item" :class=[element.type] @click="handleItemClick(element)">
-          value is : {{element.value}}
-        </div>
-      </template>
-    </draggable>
-  </div>
+  
+  <draggable 
+    v-model="draggableItems" 
+    item-key="id"
+    @end="handleDragEnd"
+    class="draggable-area"
+  >
+    <template #item="{element}">
+      <div class="draggable-item" :class=[element.type] @click="handleItemClick(element)">
+        value is : {{element.value}}
+      </div>
+    </template>
+  </draggable>
+  
 </template>
 
 <script lang="ts">
@@ -77,6 +78,8 @@ export default defineComponent({
   border: 2px dashed rgb(117, 164, 250);
   border-radius: 4px;
   padding: 6px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .draggable-item {
@@ -86,11 +89,14 @@ export default defineComponent({
   border-radius: 4px;
   font-weight: bold;
   font-size: 20px;
+  box-sizing: border-box;
 }
 .draggable-item.type1 {
   color: rgb(148, 71, 0);
+  width: 100%;
 }
 .draggable-item.type2 {
   color: rgb(52, 0, 148);
+  width: 50%;
 }
 </style>
