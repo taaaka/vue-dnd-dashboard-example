@@ -9,7 +9,7 @@
       @end="handleDragEnd"
     >
       <template #item="{element}">
-        <div class="draggable-item">
+        <div class="draggable-item" :class=[element.type] @click="handleItemClick(element)">
           value is : {{element.value}}
         </div>
       </template>
@@ -34,29 +34,37 @@ export default defineComponent({
         {
           id: 1,
           value: 'aaa',
+          type: 'type1',
         },
         {
           id: 2,
           value: 'vvv',
+          type: 'type1',
         },
         {
           id: 3,
           value: 'ccc',
+          type: 'type1',
         },
         {
           id: 4,
           value: 'aaasdfasdfa',
+          type: 'type1',
         },
       ]);
 
     const handleDragEnd = () => {
-      
       console.log(toRaw(draggableItems.value).map(v => toRaw(v)));
+    };
+
+    const handleItemClick = (item) => {
+      item.type = (item.type === 'type1') ? 'type2' : 'type1'
     };
 
     return {
       draggableItems,
       handleDragEnd,
+      handleItemClick,
     }
   }
 })
@@ -76,5 +84,13 @@ export default defineComponent({
   padding: 10px;
   border: 1px solid rgb(50, 81, 138);
   border-radius: 4px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.draggable-item.type1 {
+  color: rgb(148, 71, 0);
+}
+.draggable-item.type2 {
+  color: rgb(52, 0, 148);
 }
 </style>
