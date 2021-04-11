@@ -83,7 +83,7 @@ export default defineComponent({
 }
 
 .draggable-item {
-  margin: 4px 0;
+  margin: 4px;
   padding: 10px;
   border: 1px solid rgb(50, 81, 138);
   border-radius: 4px;
@@ -93,10 +93,10 @@ export default defineComponent({
 }
 .draggable-item.type1 {
   color: rgb(148, 71, 0);
-  width: 100%;
+  width: calc(100% - 8px);
 }
 .draggable-item.type2 {
   color: rgb(52, 0, 148);
-  width: 50%;
+  width: calc(50% - 8px);
 }
 </style>
