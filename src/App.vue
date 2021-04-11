@@ -7,7 +7,9 @@
     v-model="draggableItems" 
     item-key="id"
     @end="handleDragEnd"
+    :disabled="disableDraggable"
     class="draggable-area"
+    :class="{enable: !disableDraggable}"
   >
     <template #item="{element}">
       <div class="draggable-item" :class=[element.type] @click="handleItemClick(element)">
@@ -15,6 +17,10 @@
       </div>
     </template>
   </draggable>
+
+  <div class="button-area">
+    <button @click="handleToggleDraggable">Toggle Draggable</button>
+  </div>
   
 </template>
 
@@ -53,19 +59,30 @@ export default defineComponent({
           type: 'type1',
         },
       ]);
+    
+    const disableDraggable = ref(false);
 
     const handleDragEnd = () => {
       console.log(toRaw(draggableItems.value).map(v => toRaw(v)));
     };
 
     const handleItemClick = (item) => {
+      if (unref(disableDraggable)) {
+        return;
+      }
       item.type = (item.type === 'type1') ? 'type2' : 'type1'
     };
 
+    const handleToggleDraggable = () => {
+      disableDraggable.value = !unref(disableDraggable);
+    }
+
     return {
+      disableDraggable,
       draggableItems,
       handleDragEnd,
       handleItemClick,
+      handleToggleDraggable
     }
   }
 })
@@ -75,7 +92,7 @@ export default defineComponent({
 .draggable-area {
   width: 80vw;
   margin: auto;
-  border: 2px dashed rgb(117, 164, 250);
+  border: 2px solid rgb(117, 164, 250);
   border-radius: 4px;
   padding: 6px;
   display: flex;
@@ -91,6 +108,11 @@ export default defineComponent({
   font-size: 20px;
   box-sizing: border-box;
 }
+
+.draggable-area.enable > .draggable-item {
+  border-style: dashed;
+}
+
 .draggable-item.type1 {
   color: rgb(148, 71, 0);
   width: calc(100% - 8px);
@@ -99,4 +121,10 @@ export default defineComponent({
   color: rgb(52, 0, 148);
   width: calc(50% - 8px);
 }
+
+.button-area {
+  margin: 10px 0;
+  text-align: center;
+}
+
 </style>
