@@ -13,7 +13,10 @@
   >
     <template #item="{element}">
       <div class="draggable-item" :class=[element.type] @click="handleItemClick(element)">
-        value is : {{element.value}}
+        <p>
+          value is : {{element.value}}
+        </p> 
+        <component :is="getComponentElement(element.type)"></component>
       </div>
     </template>
   </draggable>
@@ -26,15 +29,21 @@
 
 <script lang="ts">
 import { defineComponent, isRef, reactive, ref, toRaw, unref } from 'vue'
+import draggable from 'vuedraggable'
+
 import HelloWorld from './components/HelloWorld.vue'
 
-import draggable from 'vuedraggable'
+// dynamic component 
+import DynamicComp1 from './components/DynamicComp1.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
     HelloWorld,
     draggable,
+    
+    // dynamic
+    DynamicComp1
   },
   setup() {
     const draggableItems = ref([
@@ -77,12 +86,22 @@ export default defineComponent({
       disableDraggable.value = !unref(disableDraggable);
     }
 
+    const getComponentElement = (type) => {
+      if (type === 'type1') {
+        return DynamicComp1
+      }
+      // TODO
+      return DynamicComp1
+    }
+
     return {
       disableDraggable,
       draggableItems,
       handleDragEnd,
       handleItemClick,
-      handleToggleDraggable
+      handleToggleDraggable,
+
+      getComponentElement
     }
   }
 })

@@ -12,7 +12,8 @@ export default defineComponent({
   props: {
     title: {
       type: String,
-      required: true
+      // required: true
+      default: 'DEFAULT'
     }
   }
 })
