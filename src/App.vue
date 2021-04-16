@@ -35,6 +35,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
 // dynamic component 
 import DynamicComp1 from './components/DynamicComp1.vue'
+import DynamicComp2 from './components/DynamicComp2.vue'
 
 export default defineComponent({
   name: 'App',
@@ -43,7 +44,8 @@ export default defineComponent({
     draggable,
     
     // dynamic
-    DynamicComp1
+    DynamicComp1,
+    DynamicComp2,
   },
   setup() {
     const draggableItems = ref([
@@ -87,11 +89,7 @@ export default defineComponent({
     }
 
     const getComponentElement = (type) => {
-      if (type === 'type1') {
-        return DynamicComp1
-      }
-      // TODO
-      return DynamicComp1
+      return type = (type === 'type1') ? DynamicComp1 : DynamicComp2
     }
 
     return {
