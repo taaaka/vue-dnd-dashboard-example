@@ -12,12 +12,18 @@
     :class="{enable: !disableDraggable}"
   >
     <template #item="{element}">
-      <div class="draggable-item" :class=[element.type] @click="handleItemClick(element)">
+      <div
+        class="draggable-item"
+        :class=[element.type]
+        @click="handleItemClick(element)"
+        v-if="disableDraggable"
+      >
         <p>
           value is : {{element.value}}
         </p> 
         <component :is="getComponentElement(element.type)"></component>
       </div>
+      <InEdit v-else v-model="element.type"></InEdit>
     </template>
   </draggable>
 
@@ -33,6 +39,8 @@ import draggable from 'vuedraggable'
 
 import HelloWorld from './components/HelloWorld.vue'
 
+import InEdit from './components/widget/InEdit.vue'
+
 // dynamic component 
 import DynamicComp1 from './components/DynamicComp1.vue'
 import DynamicComp2 from './components/DynamicComp2.vue'
@@ -42,6 +50,7 @@ export default defineComponent({
   components: {
     HelloWorld,
     draggable,
+    InEdit,
     
     // dynamic
     DynamicComp1,
