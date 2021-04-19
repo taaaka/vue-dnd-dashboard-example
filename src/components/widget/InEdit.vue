@@ -1,6 +1,6 @@
 <template>
   <div
-    class="draggable-item"
+    class="draggable-item shake-constant shake-little"
     :class=[modelValue]
   >
     <h4>Edit Widget</h4>
