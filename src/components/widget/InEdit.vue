@@ -3,7 +3,7 @@
     class="draggable-item shake-constant shake-little"
     :class=[modelValue]
   >
-    <h4>Edit Widget</h4>
+    <h2>Edit Widget: {{title}}</h2>
     <label>
       <input type="radio"
         value="type1"
@@ -30,6 +30,10 @@ export default defineComponent({
   name: 'InEdit',
   props: {
     modelValue: {
+      type: String,
+      required: true
+    },
+    title: {
       type: String,
       required: true
     }

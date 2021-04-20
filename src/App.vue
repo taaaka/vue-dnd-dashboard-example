@@ -14,7 +14,7 @@
     <template #item="{element}">
       <div
         class="draggable-item"
-        :class=[element.type]
+        :class="[element.type]"
         @click="handleItemClick(element)"
         v-if="disableDraggable"
       >
@@ -23,7 +23,7 @@
         </p> 
         <component :is="getComponentElement(element.type)"></component>
       </div>
-      <InEdit v-else v-model="element.type"></InEdit>
+      <InEdit v-else v-model="element.type" :title="element.value"></InEdit>
     </template>
   </draggable>
 
@@ -114,6 +114,15 @@ export default defineComponent({
 })
 </script>
 
+<style>
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+p {
+  margin: 0;
+}
+</style>
+
 <style scoped>
 .draggable-area {
   width: 80vw;
@@ -133,6 +142,7 @@ export default defineComponent({
   font-weight: bold;
   font-size: 20px;
   box-sizing: border-box;
+  display: block;
 }
 
 .draggable-area.enable > .draggable-item {
