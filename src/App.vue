@@ -80,7 +80,7 @@ export default defineComponent({
         },
       ]);
     
-    const disableDraggable = ref(false);
+    const disableDraggable = ref(true);
 
     const handleDragEnd = () => {
       console.log(toRaw(draggableItems.value).map(v => toRaw(v)));

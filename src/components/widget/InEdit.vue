@@ -39,9 +39,9 @@ export default defineComponent({
     }
   },
   setup(props, ctx) {
-    const typeValue = computed({ 
-      get: () => props.modelValue, 
-      set: (value) => ctx.emit('update:modelValue', value) 
+    const typeValue = computed<WidgetType>({ 
+      get() {return props.modelValue as WidgetType}, 
+      set(value) {ctx.emit('update:modelValue', value)}
     });
     return {
       typeValue
