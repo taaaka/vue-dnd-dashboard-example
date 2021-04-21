@@ -5,15 +5,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, isRef, reactive, ref, toRaw, unref } from 'vue'
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'DynamicComp1',
   props: {
     title: {
       type: String,
-      // required: true
-      default: 'DEFAULT'
+      required: true,
     }
   }
 })

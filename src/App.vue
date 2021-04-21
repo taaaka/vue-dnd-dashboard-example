@@ -21,7 +21,7 @@
         <p>
           value is : {{element.value}}
         </p> 
-        <component :is="getComponentElement(element.type)"></component>
+        <component :is="getComponentElement(element.type)" v-bind="element.value"></component>
       </div>
       <InEdit v-else v-model="element.type" :title="element.value"></InEdit>
     </template>
@@ -60,22 +60,30 @@ export default defineComponent({
     const draggableItems = ref([
         {
           id: 1,
-          value: 'aaa',
+          value: {
+            title: 'mock1',
+          },
           type: 'type1',
         },
         {
           id: 2,
-          value: 'vvv',
+          value: {
+            title: 'mock2',
+          },
           type: 'type1',
         },
         {
           id: 3,
-          value: 'ccc',
+          value: {
+            title: 'mock3',
+          },
           type: 'type1',
         },
         {
           id: 4,
-          value: 'aaasdfasdfa',
+          value: {
+            title: 'mock4',
+          },
           type: 'type1',
         },
       ]);
