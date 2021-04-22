@@ -18,9 +18,6 @@
         @click="handleItemClick(element)"
         v-if="disableDraggable"
       >
-        <p>
-          value is : {{element.value}}
-        </p> 
         <component :is="getComponentElement(element.type)" v-bind="element.value"></component>
       </div>
       <InEdit v-else v-model="element.type" :title="element.value"></InEdit>
@@ -62,6 +59,7 @@ export default defineComponent({
           id: 1,
           value: {
             title: 'mock1',
+            name: 'Mock 1',
           },
           type: 'type1',
         },
@@ -69,6 +67,7 @@ export default defineComponent({
           id: 2,
           value: {
             title: 'mock2',
+            name: 'Mock 2',
           },
           type: 'type1',
         },
@@ -76,6 +75,7 @@ export default defineComponent({
           id: 3,
           value: {
             title: 'mock3',
+            name: 'Mock 3',
           },
           type: 'type1',
         },
@@ -83,6 +83,7 @@ export default defineComponent({
           id: 4,
           value: {
             title: 'mock4',
+            name: 'Mock 4',
           },
           type: 'type1',
         },

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>(2) Dynamic</h2>
-    <p>title is {{title}}</p>
+    <p>Name -> {{name}}</p>
   </div>
 </template>
 
@@ -11,10 +11,9 @@ import { defineComponent, isRef, reactive, ref, toRaw, unref } from 'vue'
 export default defineComponent({
   name: 'DynamicComp2',
   props: {
-    title: {
+    name: {
       type: String,
-      // required: true
-      default: 'DEFAULT'
+      required: true
     }
   }
 })
