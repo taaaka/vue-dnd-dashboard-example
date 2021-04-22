@@ -1,9 +1,9 @@
 <template>
   <div
-    class="draggable-item shake-constant shake-little"
+    class="draggable-item"
     :class=[modelValue]
   >
-    <h2>Edit Widget: {{title}}</h2>
+    <h3>In Editing</h3>
     <label>
       <input type="radio"
         value="type1"

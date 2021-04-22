@@ -10,6 +10,10 @@
     :disabled="disableDraggable"
     class="draggable-area"
     :class="{enable: !disableDraggable}"
+    ghostClass="sortable-ghost"
+	  chosenClass="sortable-chosen"
+	  dragClass="sortable-drag"
+    :animation="100"
   >
     <template #item="{element}">
       <div
@@ -152,6 +156,11 @@ p {
   font-size: 20px;
   box-sizing: border-box;
   display: block;
+  background: #fff;
+}
+
+.draggable-item.sortable-ghost {
+  background: rgb(88.2%, 92.9%, 100%)
 }
 
 .draggable-area.enable > .draggable-item {
