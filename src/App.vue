@@ -13,7 +13,7 @@
     ghostClass="sortable-ghost"
 	  chosenClass="sortable-chosen"
 	  dragClass="sortable-drag"
-    :animation="100"
+    :animation="200"
   >
     <template #item="{element}">
       <div
@@ -24,7 +24,7 @@
       >
         <component :is="getComponentElement(element.type)" v-bind="element.value"></component>
       </div>
-      <InEdit v-else v-model="element.type" :title="element.value"></InEdit>
+      <InEdit v-else v-model="element.type" :title="element.value.title"></InEdit>
     </template>
   </draggable>
 
